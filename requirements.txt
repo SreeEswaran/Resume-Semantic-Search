@@ -1,6 +1,9 @@
 fastapi
 uvicorn
+requests
+pymupdf
+pdfplumber
 sentence-transformers
 faiss-cpu
-pdfplumber
-requests
+numpy
+streamlit
