@@ -1,42 +1,3 @@
-# from qdrant_client import QdrantClient
-# from qdrant_client.http.models import Distance, VectorParams, PointStruct, VectorStruct
-# from embed import get_embeddings
-# import json 
-# client = QdrantClient(":memory:")
-# def store_embeddings(embeddings, processed_resumes):
-   
-
-#     collection_name = "resume"
-#     vector_name = "default"
-
-#     # Check if the collection exists, if not create it
-#     if not client.collection_exists(collection_name):
-#         vector_params = VectorParams(size=384, distance=Distance.COSINE)
-#         client.create_collection(
-#             collection_name=collection_name,
-#             vectors_config=vector_params
-#         )
-
-#     # Prepare points to be inserted into the collection
-#     points = []
-#     for i, embedding in enumerate(embeddings):
-#         points.append(PointStruct(
-#             id=i,
-#             vector=embedding.tolist(),
-#             payload=processed_resumes[i]
-#         ))
-
-    
-#     client.upsert(collection_name=collection_name, points=points)
-
-#     print("Embeddings stored successfully.")
-
-# with open('processed_resumes.json', 'r') as f:
-#     processed_resumes = json.load(f)
-
-# texts = [resume['text'] for resume in processed_resumes]
-# embeddings = get_embeddings(texts)
-# store_embeddings(embeddings, processed_resumes)
 from qdrant_client import QdrantClient
 from qdrant_client.http.models import Distance, VectorParams,VectorStruct, PointStruct, MultiVectorConfig,MultiVectorComparator
 from embed import get_embeddings
@@ -65,16 +26,6 @@ def store_embeddings(embeddings, processed_resumes):
             vectors_config=vector_params
         )
 
-    # # Check if the collection exists, if not create it
-    # if not client.collection_exists(collection_name):
-    #     vector_params = VectorParams(size=384, distance=Distance.COSINE)
-    #     client.
-    #     client.create_collection(
-    #         collection_name=collection_name,
-    #         vectors_config=vector_params
-    #     )
-
-    # Prepare points to be inserted into the collection
     points = []
     for i, embedding in enumerate(embeddings):
         points.append(PointStruct(
@@ -84,7 +35,7 @@ def store_embeddings(embeddings, processed_resumes):
         ))
         
 
-    client.upsert(collection_name=collection_name, points=points, wait=True)
+    client.upsert(collection_name=collection_name, points=points)
     print("Embeddings stored successfully.")
 
 

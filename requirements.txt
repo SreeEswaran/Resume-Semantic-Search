@@ -1,9 +1,9 @@
-qdrant_client
-transformers
-PyPDF2
-streamlit
 fastapi
 uvicorn
-torch
-fastembed
-httpx
+requests
+pymupdf
+pdfplumber
+sentence-transformers
+faiss-cpu
+numpy
+streamlit
